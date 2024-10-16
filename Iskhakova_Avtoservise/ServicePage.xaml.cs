@@ -53,11 +53,6 @@ namespace Iskhakova_Avtoservise
             UpdateServices();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new AddEditPage());
-        }
-
         private void UpdateServices()
         {
             var currentServices = iskhakova_avtoserviceEntities.GetContext().Service.ToList();
@@ -99,6 +94,25 @@ namespace Iskhakova_Avtoservise
             if (RButtonUP.IsChecked.Value)
             {
                 ServiceListView.ItemsSource = currentServices.OrderBy(p => p.Cost).ToList();
+            }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            //открыть окно добавления услуг или редактирования 
+            Manager.MainFrame.Navigate(new AddEditPage(null));
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Service));
+        }
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                iskhakova_avtoserviceEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ServiceListView.ItemsSource = iskhakova_avtoserviceEntities.GetContext().Service.ToList();
             }
         }
     }

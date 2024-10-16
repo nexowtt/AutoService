@@ -6,9 +6,8 @@
       xmlns:local="clr-namespace:Iskhakova_Avtoservise"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ServicePage">
+      Title="ServicePage" FontFamily="Tw Cen MT" IsVisibleChanged="Page_IsVisibleChanged">
 
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -39,6 +38,8 @@
             <RadioButton Content="По возрастанию стоимости" GroupName="Sort" Width="300" FontSize="20" Checked="RadioButton_Checked" Name="RButtonUP"></RadioButton>
             <RadioButton Content="По убыванию стоимости" GroupName="Sort" Width="300" FontSize="20" Checked="RadioButton_Checked_1" Name="RButtonDown"></RadioButton>
         </StackPanel>
+
+        <Button Content="Добавить" Name="AddButton" Click="AddButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
         
         <ListView Name="ServiceListView"  Grid.Row="2">
             <ListView.ItemTemplate>
@@ -74,7 +75,7 @@
 
 
                         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
-                            <Button Name="EditButton" Content="peдактировать" Margin="2"></Button>
+                            <Button Name="EditButton" Click='EditButton_Click' Content="рeдактировать" Margin="2"></Button>
                             <Button Name="DeleteButton" Content="удалить" Margin="2"></Button>
                         </StackPanel>
                     </Grid>
