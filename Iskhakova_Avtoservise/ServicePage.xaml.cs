@@ -86,7 +86,7 @@ namespace Iskhakova_Avtoservise
             {
                 currentServices = currentServices.Where(p => (Convert.ToInt32(p.Discount) >= 70 && Convert.ToInt32(p.Discount) < 100)).ToList();
             }
-
+        ///fsdfdsfdsfdsfsd
 
             currentServices = currentServices.Where(p => p.Title.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
             ServiceListView.ItemsSource = currentServices.ToList();
